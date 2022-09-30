@@ -8,7 +8,7 @@ LDFLAGS     = -T ld_ram.lds -nostdlib
 TARGET_ARCH = -mcpu=cortex-m4 -mthumb
 # TARGET_ARCH += -mfloat-abi=hard -mfpu=fpv4-sp-d16
 
-OBJS = main.o crt0.o
+OBJS = main.o crt0.o init.o
 EXE  = prog.elf
 
 all : $(EXE)

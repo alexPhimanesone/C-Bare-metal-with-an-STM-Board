@@ -19,9 +19,11 @@ SECTIONS
             *(.data)
         } > sram1
 
+        __bss_start = .;
         .bss : {
             *(.bss) *(COMMON)
         } > sram1
+        __bss_end = .;
     }
 
 ENTRY(_start)
