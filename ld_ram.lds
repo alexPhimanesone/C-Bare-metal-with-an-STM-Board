@@ -24,4 +24,4 @@ SECTIONS
         } > sram1
     }
 
-ENTRY(main)
+ENTRY(_start)
