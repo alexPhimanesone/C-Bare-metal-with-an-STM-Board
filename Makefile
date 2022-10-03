@@ -3,7 +3,7 @@ LD          = $(PREFIX)ld
 GDB         = $(PREFIX)gdb
 CC          = $(PREFIX)gcc
 AS          = $(PREFIX)as
-CFLAGS      = -c -g -O1
+CFLAGS      = -c -g -O1 -ffreestanding
 LDFLAGS     = -T ld_ram.lds -nostdlib
 TARGET_ARCH = -mcpu=cortex-m4 -mthumb
 # TARGET_ARCH += -mfloat-abi=hard -mfpu=fpv4-sp-d16
@@ -15,7 +15,7 @@ all : $(EXE)
 
 # Regle deja presente
 # %.o : %.c
-#   $(CC) $(FLAGS) $(TARGET_ARCH) $< -o $@
+#   $(CC) $(CFLAGS) $(TARGET_ARCH) $< -o $@
 
 $(EXE) : $(OBJS)
 	$(CC) $(LDFLAGS) $^ -o $@
@@ -25,3 +25,8 @@ connect :
 
 debug : $(EXE)
 	$(GDB) -x  se203.gdb $<
+
+clean :
+	rm -f $(OBJS)
+	rm -f $(EXE)
+.PHONY : clean
