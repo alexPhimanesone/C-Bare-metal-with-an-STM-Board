@@ -1,0 +1,13 @@
+Il suffit de déclarer des variables se logeant à la bonne zone mémoire et d'afficher leur adresse.
+on trouve:
+
+ADRESSES GRANDES
+pile
+tas
+bss
+data
+rodata
+txt
+ADRESSES PETITES
+
+En introduisant une fonction auxiliaire, on trouve que la pile est descendante.

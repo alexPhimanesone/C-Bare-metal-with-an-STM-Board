@@ -1,0 +1,4 @@
+On observe que les instructions assembleurs sont identiques à une différence près.
+Dans le .s correspondant au cas où i est un uint8_t, on observe l'instruction supplémentaire:
+and	r3, r3, #255
+Cette instruction laisse inchangée les uint8_t mais pas les unsigned int, possiblement valant plus que 255.

@@ -1,0 +1,2 @@
+Dans compil2.s, on observe que la valeur de c est lue 2 fois.
+En effet, nous n'avons aucune garantie que la valeur de c ne change pas entre la première et la deuxième lecture.
