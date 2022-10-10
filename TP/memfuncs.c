@@ -1,10 +1,13 @@
-/* const void* : le pointeur varie mais les objets pointes sont constants */
+#include <stdint.h>
 
-void* memcpy(void* dest, const void* source, size_t size)
+
+/* const uint8_t* : le pointeur varie mais les objets pointes sont constants */
+
+void* memcpy(void* dest, const void* source, unsigned int size)
 {
-    void* i = dest;
-    const void* j = source;
-    for (size_t k = 0; k < size; k++)
+    uint8_t* i = (uint8_t*) dest;
+    const uint8_t* j = (uint8_t*) source;
+    for (unsigned int k = 0; k < size; k++)
     {
         *i = *j;
         i++;
@@ -15,16 +18,16 @@ void* memcpy(void* dest, const void* source, size_t size)
 
 /* on regarde la position relative de dest et source
 pour savoir par ou commencer a copier source vers dest */
-void* memmove(void* dest, const void* source, size_t size)
+void* memmove(void* dest, const void* source, unsigned int size)
 {
     if (dest < source)
     {
-        memcpy(dest, source, size)
+        return memcpy(dest, source, size);
     }
     else
     {
-        void* i = dest + size - 1;
-        const void* j = source + size - 1;
+        uint8_t* i = (uint8_t*) (dest + size - 1);
+        const uint8_t* j = (uint8_t*) (source + size - 1);
         while (size--)
         {
             *i = *j;
@@ -35,27 +38,29 @@ void* memmove(void* dest, const void* source, size_t size)
     }
 }
 
-void* memset (void* dest, int value, size_t size)
+void* memset (void* dest, int value, unsigned int size)
 {
-    void* i = dest;
+    uint8_t* i = (uint8_t*) dest;
     while (size--)
     {
         *i = value;
-        i++
+        i++;
     }
     return dest;
 }
 
-int memcmp (const void* pointer1, const void* pointer2, size_t size)
+int memcmp (const void* pointer1, const void* pointer2, unsigned int size)
 {
     while (size--)
     {
-        if (*pointer1 != *pointer2)
+        uint8_t* i = (uint8_t*) pointer1;
+        uint8_t* j = (uint8_t*) pointer2;
+        if (*i != *j)
         {
-            return *pointer1 < *pointer2 ? -1 : 1;
+            return *i < *j ? -1 : 1;
         }
-        pointer1++;
-        pointer2++;
+        i++;
+        j++;
     }
     return 0;
 }

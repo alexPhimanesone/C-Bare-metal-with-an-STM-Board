@@ -3,12 +3,12 @@ LD          = $(PREFIX)ld
 GDB         = $(PREFIX)gdb
 CC          = $(PREFIX)gcc
 AS          = $(PREFIX)as
-CFLAGS      = -c -g -O1 -ffreestanding
+CFLAGS      = -c -g -O1 -ffreestanding -Wall -Wextra -Werror
 LDFLAGS     = -T ld_ram.lds -nostdlib
 TARGET_ARCH = -mcpu=cortex-m4 -mthumb
 # TARGET_ARCH += -mfloat-abi=hard -mfpu=fpv4-sp-d16
 
-OBJS = main.o crt0.o init.o
+OBJS = main.o crt0.o init.o memfuncs.o led.o
 EXE  = prog.elf
 
 all : $(EXE)
