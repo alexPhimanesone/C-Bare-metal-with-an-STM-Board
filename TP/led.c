@@ -1,5 +1,6 @@
 #include <stdint.h>
 #include "led.h"
+#include "stm32l475xx.h"
 
 #define RCC_AHB2ENR *((volatile uint32_t*) 0x4002104C)
 #define GPIOB_MODER *((volatile uint32_t*) 0x48000400)

@@ -1,19 +1,10 @@
 #include "led.h"
-
-int fibo(int n)
-{
-	if (n == 0 || n == 1)
-		return n;
-	else
-		return (fibo(n-1) + fibo(n-2));
-}
-
-int n1 = 777;
-int n2;
-int n3;
+#include "clocks.h"
 
 int main()
 {
+	clocks_init();
+
 	led_init();
 	for (int i = 0; i < 30; i++)
 	{
@@ -36,5 +27,5 @@ int main()
 		led(LED_OFF);
 	}
 
-	return fibo(8);
+	return 0;
 }
