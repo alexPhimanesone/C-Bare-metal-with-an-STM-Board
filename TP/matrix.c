@@ -269,7 +269,7 @@ void image_statique()
     }
 
     /* affichage cyclique */
-    for (int k = 0; k < 10000; k++)
+    for (int k = 0; k < 1000; k++)
     {
         for (int i = 0; i < 8; i++)
         {

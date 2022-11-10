@@ -2,6 +2,7 @@
 #include "clocks.h"
 #include "uart.h"
 #include "matrix.h"
+#include "irq.h"
 
 
 int main()
@@ -9,7 +10,7 @@ int main()
 	clocks_init();
 
 	led_init();
-	for (int i = 0; i < 3; i++)
+	for (int i = 0; i < 2; i++)
 	{
 		led_g_on();
 		for (int i=0; i < 3000000; i++)
@@ -35,6 +36,8 @@ int main()
 	
 	matrix_init();
 	image_statique();
+
+	irq_init();
 
 	return 0;
 }
