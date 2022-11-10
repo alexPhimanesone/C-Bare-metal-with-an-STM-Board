@@ -3,6 +3,8 @@
 #include "stm32l475xx.h"
 
 
+extern rgb_color image[64];
+
 
 void matrix_init()
 {
@@ -251,5 +253,32 @@ void test_pixels()
             asm volatile("nop");
         }
         deactivate_rows();
+    }
+}
+
+void image_statique()
+{
+    /* lecture de image */
+    rgb_color pixels[8][8];
+    for (int i = 0; i < 8; i++)
+    {
+        for (int j = 0; j < 8; j++)
+        {
+            pixels[i][j] = image[8*i + j];
+        }
+    }
+
+    /* affichage cyclique */
+    for (int k = 0; k < 10000; k++)
+    {
+        for (int i = 0; i < 8; i++)
+        {
+            mat_set_row(i, pixels[i]);
+            for (int p = 0; p < 100; p++)
+            {
+                asm volatile("nop");
+            }
+            deactivate_rows();
+        }
     }
 }

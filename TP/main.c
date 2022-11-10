@@ -34,7 +34,7 @@ int main()
 	uart_puts("Hello World!");
 	
 	matrix_init();
-	test_pixels();
-	
+	image_statique();
+
 	return 0;
 }

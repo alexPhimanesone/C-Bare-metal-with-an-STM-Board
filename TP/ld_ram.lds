@@ -5,6 +5,11 @@ MEMORY
         sram2 (wx) : ORIGIN = 0x10000000, LENGTH = 32K
     }
 
+/* commandes pour linker l'image en format binaire */
+TARGET(binary)
+INPUT(./image.raw)
+OUTPUT_FORMAT(default)
+
 SECTIONS
     {
         .text : {
@@ -12,6 +17,8 @@ SECTIONS
         } > sram1
 
         .rodata : {
+            image = .;
+            ./image.raw
             *(.rodata)
         } > sram1
 
