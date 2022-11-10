@@ -9,7 +9,7 @@ CPPFLAGS    = -ICMSIS/Device/ST/STM32L4xx/Include -ICMSIS/Include
 TARGET_ARCH = -mcpu=cortex-m4 -mthumb
 TARGET_ARCH += -mfloat-abi=hard -mfpu=fpv4-sp-d16
 
-OBJS = main.o crt0.o init.o memfuncs.o led.o uart.o
+OBJS = main.o crt0.o init.o memfuncs.o led.o uart.o matrix.o
 EXE  = prog.elf
 
 
